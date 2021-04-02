@@ -1,0 +1,1 @@
+This is the educational repository of Maksim Ivanov, a student of the Institute of ITIS KFU. Here are the files of the training project implemented within the framework of the JavaLab educational laboratory

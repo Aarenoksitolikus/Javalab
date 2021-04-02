@@ -56,4 +56,9 @@ public class UsersRepositoryFakeImpl implements UsersRepository {
     public Optional<User> findByEmail(String email) {
         return Optional.empty();
     }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return Optional.empty();
+    }
 }

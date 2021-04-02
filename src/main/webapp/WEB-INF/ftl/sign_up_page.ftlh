@@ -27,15 +27,17 @@
     <div class="signup regform">
         <form method="post" action="/signup">
             <p><label for="username">Enter your nickname in BongoNet:</label></p>
-            <p><input type="text" id="username" name="username" placeholder="Nickname"></p>
+            <p><@spring.formInput "userForm.username" "placeholder='Username'"/></p>
+            <@spring.showErrors "<br>" "error"/>
             <p><label>Enter your email address:</label></p>
-            <p><@spring.formInput "userForm.email"/></p>
+            <p><@spring.formInput "userForm.email" "placeholder='Email'"/></p>
             <@spring.showErrors "<br>" "error"/>
             <p><label>Сome up with and enter your password:</label></p>
-            <p><@spring.formPasswordInput "userForm.password"/></p>
+            <p><@spring.formPasswordInput "userForm.password" "placeholder='Password'"/></p>
             <@spring.showErrors "<br>" "error"/>
-            <p><label for="check_password">Enter your password once again:</label></p>
-            <p><input type="password" id="check_password" name="check_password" placeholder="Password once again"></p>
+            <p><label>Enter your password once again:</label></p>
+            <p><@spring.formPasswordInput "userForm.checkPassword" "placeholder='Password once again'"/></p>
+            <@spring.showErrors "<br>" "error"/>
             <p><input type="submit" value="Sign up!"></p>
         </form>
     </div>

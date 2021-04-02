@@ -80,4 +80,9 @@ public class UsersServiceImpl implements UsersService {
     public UserDto getUser(Long userId) {
         return UserDto.from(usersRepository.findById(userId).orElse(null));
     }
+
+    @Override
+    public UserDto getUser(String username) {
+        return UserDto.from(usersRepository.findByUsername(username).orElse(null));
+    }
 }

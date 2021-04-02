@@ -74,6 +74,18 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
         return Optional.empty();
     }
 
+    @Override
+    public Optional<User> findByUsername(String username) {
+        User user;
+        try {
+            user = (User) jdbcTemplate.queryForObject(SQL_SELECT_BY_USERNAME, userRowMapper, username);
+        } catch (EmptyResultDataAccessException e) {
+            user = null;
+        }
+
+        return Optional.ofNullable(user);
+    }
+
     //language=SQL
     private static final String SQL_SELECT_ALL = "SELECT * FROM " + tableName;
 
@@ -82,6 +94,9 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     //language=SQL
     private static final String SQL_SELECT_BY_ID = "select * from " + tableName + " where id = ?";
+
+    //language=SQL
+    private static final String SQL_SELECT_BY_USERNAME = "select * from " + tableName + " where username = ?";
 
     //language=SQL
     private static final String SQL_INSERT_USERNAME_AND_EMAIL = "insert into " + tableName + " (username, email) values (?, ?)";

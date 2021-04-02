@@ -12,6 +12,7 @@ public interface UsersService {
     void addUser(UserForm userForm);
 
     UserDto getUser(Long userId);
+    UserDto getUser(String username);
 
 }
 
