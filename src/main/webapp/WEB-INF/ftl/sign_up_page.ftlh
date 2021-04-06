@@ -35,6 +35,9 @@
             <p><label>Сome up with and enter your password:</label></p>
             <p><@spring.formPasswordInput "userForm.password" "placeholder='Password'"/></p>
             <@spring.showErrors "<br>" "error"/>
+            <#if passwordsErrorMessage??>
+                <p style="color: red">${passwordsErrorMessage}</p>
+            </#if>
             <p><label>Enter your password once again:</label></p>
             <p><@spring.formPasswordInput "userForm.checkPassword" "placeholder='Password once again'"/></p>
             <@spring.showErrors "<br>" "error"/>

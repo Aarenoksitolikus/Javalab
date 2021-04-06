@@ -9,6 +9,7 @@ import ru.itis.javalab.dto.UserForm;
 import ru.itis.javalab.services.UsersService;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 @Controller
 public class SignUpController {
@@ -29,12 +30,18 @@ public class SignUpController {
 
     @PostMapping("/signup")
     public String signUp(@Valid UserForm form, BindingResult bindingResult, Model model) {
-        if (!bindingResult.hasErrors()) {
-            usersService.addUser(form);
-            return "redirect:/success";
-        } else {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().stream().anyMatch(error -> {
+                if (Objects.requireNonNull(error.getCodes())[0].equals("userForm.ValidPasswords")) {
+                    model.addAttribute("passwordsErrorMessage", error.getDefaultMessage());
+                }
+                return true;
+            });
             model.addAttribute("userForm", form);
             return "sign_up_page";
         }
+        usersService.addUser(form);
+        return "redirect:/success";
     }
+
 }
