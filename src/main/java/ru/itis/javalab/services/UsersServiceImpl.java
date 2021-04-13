@@ -47,7 +47,8 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public List<UserDto> getAllUsers(int page, int size) {
-        return from(usersRepository.findAll(page, size));
+        return null;
+//        return from(usersRepository.findAll(page, size));
     }
 
     @Override
@@ -83,6 +84,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public UserDto getUser(String username) {
-        return UserDto.from(usersRepository.findByUsername(username).orElse(null));
+        return null;
+//        return UserDto.from(usersRepository.findByUsername(username).orElse(null));
     }
 }
